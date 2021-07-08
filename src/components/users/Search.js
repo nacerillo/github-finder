@@ -9,7 +9,8 @@ export class Search extends Component {
     static propTypes = {
         clearUsers: PropTypes.func.isRequired,
         showClear:  PropTypes.bool.isRequired,
-        searchUsers: PropTypes.func.isRequired 
+        searchUsers: PropTypes.func.isRequired,
+        setAlert : PropTypes.func.isRequired 
     }
     onSubmit = (e) =>{
         e.preventDefault();
