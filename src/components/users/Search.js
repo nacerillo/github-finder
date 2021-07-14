@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import PropTypes from 'prop-types'
 
 const Search = ({searchUsers, showClear, clearUsers, setAlert} ) => {
     //replacing props with useStateHooks
     const [text, setText] = useState();
-    
+    useEffect(() => {
+        clearUsers();
+     }, []);
     
     const onSubmit = (e) =>{
         e.preventDefault();
