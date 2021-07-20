@@ -1,5 +1,4 @@
 import React, {useState, useContext} from 'react';
-import PropTypes from 'prop-types'
 import GithubContext from '../../context/github/GithubContext';
 import AlertContext from '../../context/alerts/AlertContext';
 const Search = () => {
@@ -41,7 +40,5 @@ const Search = () => {
         );
     }
 
-Search.propTypes = {
-   
-};
+
 export default Search;
