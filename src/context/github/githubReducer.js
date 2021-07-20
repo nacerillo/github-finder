@@ -10,14 +10,11 @@ import {
 export default (state,action) => {
     switch(action.type){
         case SEARCH_USERS:
-            return {
-                ...state,
-                users: action.payload,
-                loading: false
-            }
+            return {...state,users: action.payload,loading: false};
         case SET_LOADING:
-            return {...state,
-            loading: true}
+            return {...state,loading: true}
+        case CLEAR_USERS:
+            return {...state,users: [], loading: false}
         default: 
             return state
     }

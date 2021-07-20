@@ -1,7 +1,7 @@
 import React, { useReducer} from 'react';
 import axios  from 'axios';
-import GithubContext from './githubContext';
-import GithubReducer from './githubReducer';
+import GithubContext from './GithubContext';
+import GithubReducer from './GithubReducer';
 
 import { createContext } from "react";
 
@@ -43,6 +43,8 @@ const GithubState = props => {
  //set loading
 const setLoading = () => dispatch({type: SET_LOADING});
  //clear users
+
+ const  clearUsers = () => dispatch({type: CLEAR_USERS});
 
  return (
  <GithubContext.Provider    

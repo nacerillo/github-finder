@@ -33,11 +33,11 @@ const App = () => {
   //set spinner to true until response from api had been retrieved
 
 
-const  clearUsers = () => {
+/*const  clearUsers = () => {
     //this.setState({users: [], loading: false});
     //setUsers([]);
     setLoading(false);
-  }
+  }*/
 
   //alert triggers for 5 seconds before disappearing
  const showAlert = (msg, type) => {
@@ -86,11 +86,10 @@ const  getUserRepos = async username => {
             <Route exact path= "/" render={props => (
               <Fragment>
                  <Search 
-                  clearUsers = {clearUsers} 
-                  showClear = {users.length > 0 ? true : false}
+
                   setAlert = {showAlert}
                   />
-                <Users loading = {loading} users = {users}/>
+                <Users />
               </Fragment>
             )}/>
             <Route exact path = "/about" component = {About}/>
