@@ -8,6 +8,9 @@ import About from "./components/pages/About";
 import User from "./components/users/User";
 import axios from "axios";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
+//import context
+import GithubState from './context/github/GithubState';
+
 
 const App = () => {
 
@@ -26,23 +29,9 @@ const App = () => {
     alert: null,
     
   }*/
- /* async componentDidMount(){
-   // console.log(process.env.REACT_APP_GITHUB_CLIENT_ID, process.env.REACT_APP_GITHUB_CLIENT_SECRET);
-    this.setState({loading: true});
-    const res = await axios.get(`https://api.github.com/users?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    this.setState({users: res.data, loading: false});
-  }*/
 
   //set spinner to true until response from api had been retrieved
- const searchUsers = async (text) => {
-    //this.setState({loading: true});
-    setLoading(true);
-    const res = await axios.get(`https://api.github.com/search/users?q=${text}&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
-    console.log(res.data);
-    //this.setState({users: res.data.items, loading: false});
-    setUsers(res.data.items);
-    setLoading(false);
-  }
+
 
 const  clearUsers = () => {
     //this.setState({users: [], loading: false});
@@ -87,6 +76,7 @@ const  getUserRepos = async username => {
   // const {users, loading,user, repos,alert} = this.state;
 
     return (
+<GithubState>
       <Router>
       <div className="App">
        <NavBar title = "Github Finder" icon = 'fab fa-github'/>
@@ -96,7 +86,6 @@ const  getUserRepos = async username => {
             <Route exact path= "/" render={props => (
               <Fragment>
                  <Search 
-                  searchUsers = {searchUsers} 
                   clearUsers = {clearUsers} 
                   showClear = {users.length > 0 ? true : false}
                   setAlert = {showAlert}
@@ -118,7 +107,8 @@ const  getUserRepos = async username => {
         </div>
       </div>
       </Router>
-     
+      </GithubState>
+  
     );
   
 
