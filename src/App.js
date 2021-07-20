@@ -17,8 +17,8 @@ const App = () => {
   //useState hook to handle all geting of user and repos, and loading
   //const [users, setUsers] = useState([]);
   //const [user, setUser] = useState({});
-  const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(false);
+  //const [repos, setRepos] = useState([]);
+  //const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
 
   /*state = {
@@ -60,7 +60,7 @@ const App = () => {
   }*/
 
   // Get users' Repos
-const  getUserRepos = async username => {
+/*const  getUserRepos = async username => {
    // console.log("working");
    // this.setState({loading: true});
     setLoading(true);
@@ -70,7 +70,7 @@ const  getUserRepos = async username => {
     setRepos(res.data);
     setLoading(false);
 
-  }
+  }*/
 
   // const {users, loading,user, repos,alert} = this.state;
 
@@ -92,13 +92,8 @@ const  getUserRepos = async username => {
               </Fragment>
             )}/>
             <Route exact path = "/about" component = {About}/>
-            <Route exact path = "/user/:login" render = {props => (
-              <User {...props} 
-              getUserRepos = {getUserRepos} 
-              loading = {loading}        
-              repos = {repos}
-/>
-            )}/>
+            <Route exact path = "/user/:login" component = {User}
+            />
           </Switch>
  
         </div>

@@ -11,7 +11,7 @@ SEARCH_USERS,
 SET_LOADING,
 CLEAR_USERS,
 GET_REPOS,
-GET_USER
+GET_USER  
 } from '../types';
 //const GithubContext = createContext();
 const GithubState = props => {
@@ -47,7 +47,15 @@ const GithubState = props => {
    
   }
  //GET repos
-
+ const  getUserRepos = async username => {
+    // console.log("working");
+    // this.setState({loading: true});
+     setLoading();
+     const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&sort=created:asc&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+     console.log("Working",res.data);
+     //this.setState({repos: res.data, loading: false});
+    dispatch({type: GET_REPOS, payload: res.data});
+   }
  //set loading
 const setLoading = () => dispatch({type: SET_LOADING});
  //clear users
@@ -63,8 +71,8 @@ const setLoading = () => dispatch({type: SET_LOADING});
       loading: state.loading,
       searchUsers,
       clearUsers,
-      getUser
-      //getUserRepos
+      getUser,
+      getUserRepos
       
     }}>
      {props.children}
