@@ -1,10 +1,13 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect, Fragment, useContext } from 'react'
 import Spinner from '../layout/Spinner';
 
 import PropTypes from 'prop-types';
 import Repos from '../repos/Repos';
 import {Link} from "react-router-dom";
-const User =  ({user, loading, getUser, getUserRepos,repos,match}) => {
+import GithubContext from '../../context/github/GithubContext';
+const User =  ({getUserRepos,repos,match}) => {
+const githubContext = useContext(GithubContext);
+const {getUser, loading, user} = githubContext;
 
     useEffect(() => {
         getUser(match.params.login);
@@ -12,24 +15,24 @@ const User =  ({user, loading, getUser, getUserRepos,repos,match}) => {
     }, [])
 
 
-        const {
-            name,
-            avatar_url,
-            location,
-            bio,
-            blog,
-            login,
-            html_url,
-            company,
-            followers,
-            following,
-            public_repos,
-            public_gists,
-            hireable,
 
-        } = user;
+const {
+        name,
+        avatar_url,
+        location,
+        bio,
+        blog,
+        login,
+        html_url,
+        company,
+        followers,
+        following,
+        public_repos,
+        public_gists,
+        hireable,
+    } = user;
 
-        if(loading) return <Spinner/>
+if(loading) return <Spinner/>
         return (
             <Fragment>
                 <Link to = "/" className = "btn btn-light">

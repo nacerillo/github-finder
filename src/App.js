@@ -15,8 +15,8 @@ import GithubState from './context/github/GithubState';
 const App = () => {
 
   //useState hook to handle all geting of user and repos, and loading
-  const [users, setUsers] = useState([]);
-  const [user, setUser] = useState({});
+  //const [users, setUsers] = useState([]);
+  //const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
@@ -32,7 +32,7 @@ const App = () => {
 
   //set spinner to true until response from api had been retrieved
 
-
+//moved to context
 /*const  clearUsers = () => {
     //this.setState({users: [], loading: false});
     //setUsers([]);
@@ -46,19 +46,18 @@ const App = () => {
     setTimeout(() => setAlert(null), 5000);
   }
 
-  //Get single Github user
- const getUser = async username => {
+  //Get single Github user --moved to context
+ /*const getUser = async username => {
     //console.log("working");
    // this.setState({loading: true});
     setLoading(true);
-
     const res = await axios.get(`https://api.github.com/users/${username}?client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
     console.log("Working",res.data);
     //this.setState({user: res.data, loading: false});
     setUser(res.data);
     setLoading(false);
    
-  }
+  }*/
 
   // Get users' Repos
 const  getUserRepos = async username => {
@@ -95,11 +94,10 @@ const  getUserRepos = async username => {
             <Route exact path = "/about" component = {About}/>
             <Route exact path = "/user/:login" render = {props => (
               <User {...props} 
-              getUser = {getUser}
               getUserRepos = {getUserRepos} 
-              user = {user} 
+              loading = {loading}        
               repos = {repos}
-              loading = {loading}/>
+/>
             )}/>
           </Switch>
  
