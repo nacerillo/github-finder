@@ -56,7 +56,6 @@ const GithubState = props => {
     console.log("Working",res.data);
     //this.setState({user: res.data, loading: false});
    dispatch({type: GET_USER, payload: res.data});
-   
   }
  //GET repos
  const  getUserRepos = async username => {
