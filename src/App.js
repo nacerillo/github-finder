@@ -9,7 +9,7 @@ import User from "./components/users/User";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 //import context
 import GithubState from './context/github/GithubState';
-
+import AlertState from "./context/alerts/AlertState";
 
 const App = () => {
 
@@ -18,7 +18,7 @@ const App = () => {
   //const [user, setUser] = useState({});
   //const [repos, setRepos] = useState([]);
   //const [loading, setLoading] = useState(false);
-  const [alert, setAlert] = useState(null);
+  //const [alert, setAlert] = useState(null);
 
   /*state = {
     users: [],
@@ -39,11 +39,13 @@ const App = () => {
   }*/
 
   //alert triggers for 5 seconds before disappearing
- const showAlert = (msg, type) => {
+
+  //moving to context
+ /*const showAlert = (msg, type) => {
    // this.setState({alert: {msg,type}});
    setAlert({msg,type});
     setTimeout(() => setAlert(null), 5000);
-  }
+  }*/
 
   //Get single Github user --moved to context
  /*const getUser = async username => {
@@ -75,18 +77,16 @@ const App = () => {
 
     return (
 <GithubState>
+  <AlertState>
       <Router>
       <div className="App">
        <NavBar title = "Github Finder" icon = 'fab fa-github'/>
         <div className = "container">
-          <Alert alert = {alert}/>
+          <Alert/>
           <Switch>
             <Route exact path= "/" render={props => (
               <Fragment>
-                 <Search 
-
-                  setAlert = {showAlert}
-                  />
+                 <Search />
                 <Users />
               </Fragment>
             )}/>
@@ -98,6 +98,7 @@ const App = () => {
         </div>
       </div>
       </Router>
+      </AlertState>
       </GithubState>
   
     );
