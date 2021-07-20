@@ -6,7 +6,6 @@ import Alert from "./components/layout/Alert";
 import NavBar from "./components/layout/NavBar";
 import About from "./components/pages/About";
 import User from "./components/users/User";
-import axios from "axios";
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom"
 //import context
 import GithubState from './context/github/GithubState';

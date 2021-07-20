@@ -18,6 +18,8 @@ const Search = ({ setAlert} ) => {
             setText('');
         }
     };
+
+    
     const onChange = (e) => setText(e.target.value);
    
         //const {showClear, clearUsers} = this.props;
@@ -39,8 +41,6 @@ const Search = ({ setAlert} ) => {
     }
 
 Search.propTypes = {
-  
-    showClear:  PropTypes.bool.isRequired,
     setAlert : PropTypes.func.isRequired 
 };
 export default Search;

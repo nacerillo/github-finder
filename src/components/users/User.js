@@ -81,11 +81,6 @@ if(loading) return <Spinner/>
         )
     
 }
-User.propTypes = {
 
-
-    repos: PropTypes.array.isRequired,
-    getUserRepos: PropTypes.func.isRequired
-}
 
 export default User
